@@ -2,29 +2,16 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-# This configuration is loaded before any dependency and is restricted
-# to this project. If another project depends on this project, this
-# file won't be loaded nor affect the parent project. For this reason,
-# if you want to provide default values for your application for
-# third-party users, it should be done in your "mix.exs" file.
+# To configure freddie
+config :freddie,
+  app_mod: :echo_server,                       # Type app name
 
-# You can configure your application as:
-#
-#     config :echo_server, key: :value
-#
-# and access this configuration in your application as:
-#
-#     Application.get_env(:echo_server, :key)
-#
-# You can also configure a third-party app:
-#
-#     config :logger, level: :info
-#
+  port: 5050,                                  # Type listen port
 
-# It is also possible to import configuration files, relative to this
-# directory. For example, you can emulate configuration per environment
-# by uncommenting the line below and defining dev.exs, test.exs and such.
-# Configuration from the imported file will override the ones defined
-# here (which is why it is important to import them last).
-#
-#     import_config "#{Mix.env()}.exs"
+  redis_host: "localhost",                     # Type redis host address
+  redis_port: 6379,                            # Type redis port
+  redis_pool_size: 10,                         # Type redis pool size
+
+  scheme_root_mod: EchoServer.Scheme,          # Type srotocol scheme root mod
+  packet_type_mod: EchoServer.Packets.Types,   # Type packet type root mod
+  packet_handler_mod: EchoServer.Handler       # Type packet handler mod (derive from Freddie.Router)
