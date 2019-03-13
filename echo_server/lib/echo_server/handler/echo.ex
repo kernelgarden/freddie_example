@@ -1,5 +1,4 @@
 defmodule EchoServer.Handler.Echo do
-
   alias EchoServer.Scheme
 
   def handle({_meta, msg, context}) do
